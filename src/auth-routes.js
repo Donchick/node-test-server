@@ -53,6 +53,7 @@ function login(req, res, next) {
 
     const newSessionToken = uuidV1();
     authorizedUsers[login] = newSessionToken;
+    res.set('Access-Control-Expose-Headers', 'session-token');
     res.set(sessionTokenName, newSessionToken);
     res.sendStatus(200);
 }
